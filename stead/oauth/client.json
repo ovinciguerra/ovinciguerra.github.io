@@ -1,0 +1,21 @@
+{
+  "client_id": "https://ovinciguerra.github.io/stead/oauth/client.json",
+  "client_name": "Stead",
+  "client_uri": "https://ovinciguerra.github.io/stead/",
+  "logo_uri": "https://ovinciguerra.github.io/stead/assets/stead.png",
+  "policy_uri": "https://ovinciguerra.github.io/stead/confidentialite.html",
+  "redirect_uris": [
+    "http://127.0.0.1:47861/callback",
+    "http://127.0.0.1:47862/callback",
+    "http://127.0.0.1:47863/callback"
+  ],
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "token_endpoint_auth_method": "none",
+  "application_type": "native"
+}

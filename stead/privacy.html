@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Stead</title>
+<meta name="description" content="How Stead handles your data: everything stays on your PC, nothing is sold, and every access can be removed in one click.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/stead.png">
+<link rel="alternate" hreflang="fr" href="confidentialite.html">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="wrap narrow top">
+  <a class="brand" href="en.html"><img src="assets/stead.png" alt="" width="36" height="36">Stead</a>
+  <nav aria-label="Navigation">
+    <a class="home" href="en.html">Home</a>
+    <a href="privacy.html" aria-current="page">Privacy</a>
+    <a href="confidentialite.html" hreflang="fr" lang="fr">Français</a>
+  </nav>
+</header>
+
+<main class="wrap narrow doc">
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated: November 6, 2026</p>
+
+  <div class="summary">
+    <ul>
+      <li>Stead runs at your place: on your computer, or on <strong>your own server</strong> if you set one up. There is no Stead account and no central server: the developer has no access to your email, calendar, files or conversations.</li>
+      <li>On your server, your data sits in an encrypted volume whose key stays on your computer.</li>
+      <li>When you ask it something, Stead sends the AI model you chose only what it needs to answer.</li>
+      <li>Your data is never sold, never used for advertising, and never used to train AI models.</li>
+      <li>You remove each access in one click, and you can erase everything.</li>
+    </ul>
+  </div>
+
+  <h2>Who is responsible</h2>
+  <p>Stead is a personal assistant developed by <strong>Olivier Vinciguerra</strong>, currently in private testing. For any question: <a href="mailto:o1vinciguerra@gmail.com">o1vinciguerra@gmail.com</a>.</p>
+  <p>The developer of Stead has <strong>no access</strong> to your email, calendar, files or conversations: they stay on your computer or your server.</p>
+
+  <h2>Where your data is</h2>
+  <ul>
+    <li><strong>On your computer</strong>, if Stead runs there alone: conversations, memory, rules, files (“dossiers”), activity log and settings are kept in Stead’s data folder.</li>
+    <li><strong>On your server</strong>, if you set one up (for example at Scaleway, in Paris), so that Stead answers even when your computer is off. It is a machine rented in your name, which Stead installs from your computer. Your data sits in an <strong>encrypted volume</strong> (LUKS2) that only opens with the key kept in your computer’s vault, or with your recovery code: neither is written on the server. After a restart, the server stays locked until your computer or your code opens it again. The host only sees encrypted data. Only your computer administers it, with an SSH key created by Stead.</li>
+    <li><strong>Backups.</strong> Every night, the server makes a backup encrypted for your computer only, which brings it back into your Stead folder.</li>
+    <li><strong>Encrypted secrets.</strong> Keys and access tokens (Google, Microsoft, AI models, bank, phone) are encrypted by Windows (DPAPI) or macOS (Keychain) on your computer, and additionally by a key inside the encrypted volume on your server. They are never shown to an AI model nor included in an export.</li>
+    <li><strong>Your computer, when you have a server,</strong> remains Stead’s “arm”: your Chrome, reading WhatsApp, your files, dictation. It connects to your server over an encrypted connection.</li>
+    <li><strong>On your phone,</strong> if you install the app: it connects to your server over HTTPS (or to your computer, over your Wi-Fi or your private Tailscale network) after a pairing you approve. It only stores what it needs to show your conversations.</li>
+    <li><strong>Hosting someone.</strong> You can run another person’s Stead on your server: it is separate (their data, their encrypted volume, their key, their address). Their key is in the invitation file you hand them; Stead keeps it nowhere else on your side, and gives them no access to your data nor you to theirs. Whoever hosts still administers the machine: only host, or be hosted by, someone you trust.</li>
+  </ul>
+
+  <h2>Google data</h2>
+  <p>When you connect a Google account, Stead requests the following access, and only uses it for this:</p>
+  <table class="table">
+    <thead><tr><th scope="col">Access</th><th scope="col">What Stead does with it</th></tr></thead>
+    <tbody>
+      <tr><td>Read your email<code>gmail.readonly</code></td><td>Search, read and summarise your email; spot the ones waiting for a reply; find someone’s address. When you ask, or in a routine you created.</td></tr>
+      <tr><td>Draft and send email<code>gmail.compose</code></td><td>Create drafts in your Gmail. An email is only sent after your explicit approval, with a few seconds to cancel.</td></tr>
+      <tr><td>Manage your events<code>calendar.events</code></td><td>Read your appointments and their guests (for example to find the address of someone to invite); create or delete an event, and send an invitation only after your approval.</td></tr>
+      <tr><td>See the list of your calendars<code>calendar.<wbr>calendarlist.<wbr>readonly</code></td><td>Know which calendars to look at.</td></tr>
+      <tr><td>Google Drive and Google Sheets<code>drive</code></td><td>Find a file or folder in your Drive and read it; read a Google Sheets tab. Change a Sheet (add or fix rows) or share a folder with a person only after your click on the card showing exactly the change. Nothing is deleted.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Stead’s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+  <ul>
+    <li>Your Google data is only used for the Stead features you use.</li>
+    <li>It is never sold, never used for advertising or profiling, and never used to develop, improve or train AI models.</li>
+    <li>Nobody reads it: it only leaves your computer or your server to reach the AI model you chose, when you ask it something (see below).</li>
+    <li>In Settings › Connectors, each service (Mail, Calendar, Drive, Sheets) switches off in one click.</li>
+  </ul>
+  <p>The same rules apply to a Microsoft account (Outlook, Calendar).</p>
+
+  <h2>AI models</h2>
+  <p>To understand your request and prepare an answer, Stead relies on the AI model you chose: through OpenRouter, with your ChatGPT subscription, or with a key you added. It sends your request and only the useful items (for example, the email you want to answer). The model provider processes them to produce the answer, under its own terms.</p>
+  <ul>
+    <li>By default, only Anthropic, OpenAI, Mistral and local models receive personal data, including through OpenRouter; never free models. You can restrict this in Stead.</li>
+    <li>Keys and access tokens are never sent to a model.</li>
+    <li>The content of an email, a web page, a message or a file is treated as information, never as an order: a hidden instruction addressed to an AI is flagged and not followed.</li>
+  </ul>
+
+  <h2>Test version</h2>
+  <p>If you use the test package provided by the developer, requests go through an OpenRouter account he pays for. This account does not store request content. To follow usage, the developer only sees, for each tester, an identifier (your first name and four characters), the feature used and the cost. Never the content. Test package updates are signed and downloaded from the developer’s server; they carry none of your data.</p>
+
+  <h2>WhatsApp, phone and messages</h2>
+  <ul>
+    <li><strong>Reading WhatsApp.</strong> Stead reads your WhatsApp chats in WhatsApp Web, open in your Chrome, and only the chats you allowed. Nothing goes through a third-party service.</li>
+    <li><strong>Your Stead line (Twilio).</strong> If you connect a Twilio account, the WhatsApp messages or texts you exchange with Stead, and the calls it makes for you after your approval (for example to a hotel), go through Twilio, and through WhatsApp (Meta) for WhatsApp messages, under their terms. The voice of a call is transcribed so Stead can understand it.</li>
+    <li><strong>Shared line.</strong> If you share your line with someone (a tester), they only join after your approval, and each person only sees their own exchanges.</li>
+    <li><strong>Phone notifications.</strong> They are end-to-end encrypted: the phone’s notification service only sees an encrypted message.</li>
+  </ul>
+
+  <h2>Sharing a file (“dossier”)</h2>
+  <p>When you share a dossier (with a link, a group, or a person who has Stead), what is shared goes through an <strong>end-to-end encrypted</strong> relay: the relay only sees encrypted data. You choose what the person can do (read, take part) and you stop sharing in one click. What they write is treated as information, never as an order.</p>
+
+  <h2>Bank, voice and web</h2>
+  <ul>
+    <li><strong>Finances.</strong> If you connect a bank, Stead reads your accounts and transactions through Powens (a licensed aggregator), read-only. Stead never makes a payment or a transfer, and never types a card number.</li>
+    <li><strong>Voice.</strong> By default, Stead’s dictation and voices run on your device or your server: your voice is sent nowhere. If you choose an online dictation or voice (OpenAI, Mistral, ElevenLabs), the recording or the text to read is sent to that provider to be processed.</li>
+    <li><strong>Web search and reading.</strong> For a search, Stead sends the search words to a search service (Tavily), and for train times, the search to the SNCF API. To read a page whose link you give it, it downloads that page. Nothing else is sent.</li>
+    <li><strong>Browser tasks.</strong> Stead only acts in your Chrome, or in your server’s browser, for a task you gave it. Sensitive sites (banking, health…) are blocked by default, and a form is only submitted after you approve its exact fields.</li>
+    <li><strong>Stead extension for Chrome.</strong> It links your Chrome to your Stead and nothing else: to the Stead app on your computer (local address 127.0.0.1), which relays it to your server if you have one, after your approval in Stead. For a task you gave Stead, it opens or resumes the task’s tab, reads that page and acts on it (clicks, typing), nothing more; these tabs are grouped under “Stead” so you see where it acts. What it reads serves the task and, only if useful to answer you, excerpts go to the AI model you chose (see above). It only keeps the token linking it to your Stead, your language and its version number; it stores neither your history nor your passwords, and does not read your other tabs. No code is loaded remotely. Removing it from Chrome, or removing the device in Stead, cuts the link.</li>
+  </ul>
+
+  <h2>Retention and deletion</h2>
+  <ul>
+    <li>Your data stays on your computer or your server as long as you keep it. “Erase everything”, in Stead’s settings, deletes it. Leaving your server (Settings › Server) brings your data back to your computer; you can then delete the machine at the host.</li>
+    <li>Disconnecting an account in Stead erases its tokens and, for Google, also revokes access. You can remove access at any time from your account: <a href="https://myaccount.google.com/permissions">Google</a> or <a href="https://account.live.com/consent/Manage">Microsoft</a>.</li>
+    <li>Every action Stead takes is recorded in Activity, which you can check at any time.</li>
+  </ul>
+
+  <h2>Security</h2>
+  <p>Stead proposes, and a rules engine decides: sensitive actions (sending an email or an invitation, changing a shared file, deleting a file, submitting a form, making a call) always go through your approval. Secrets are encrypted and never leave the core of the app. Your server only exposes HTTPS; it is administered with an SSH key (no password).</p>
+
+  <h2>Children</h2>
+  <p>Stead is meant for adults and is not intended for children.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the date at the top of the page is updated; an important change is announced in Stead.</p>
+
+  <h2>Contact</h2>
+  <p>Olivier Vinciguerra — <a href="mailto:o1vinciguerra@gmail.com">o1vinciguerra@gmail.com</a></p>
+</main>
+
+<footer>
+  <div class="wrap narrow">
+    <span>Stead · <a href="en.html">Home</a></span>
+    <span><a href="confidentialite.html" hreflang="fr" lang="fr">Version française</a></span>
+  </div>
+</footer>
+</body>
+</html>
