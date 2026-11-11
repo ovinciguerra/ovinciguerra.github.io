@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Stead</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#070b12;color:#e6eaf1;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:460px;padding:32px;text-align:center}p{color:#95a3b9}
+</style>
+</head>
+<body>
+<main><h1 id="t">Retour vers Stead…</h1><p id="d"></p></main>
+<script>
+// Stead (0.20.10, téléphone seul) : Google et Microsoft reviennent ici ; la page renvoie aussitôt sur l'adresse HTTPS
+// du Stead qui a lancé la connexion, écrite dans l'état (« <nonce>.<adresse en base64url> »). Rien n'est gardé ni
+// envoyé ailleurs ; le code ne sert à rien sans le vérificateur, resté dans ce Stead.
+(function () {
+  var q = new URLSearchParams(location.search);
+  var st = q.get('state') || '';
+  var dot = st.lastIndexOf('.');
+  var base = '';
+  try {
+    var b = st.slice(dot + 1).replace(/-/g, '+').replace(/_/g, '/');
+    base = decodeURIComponent(escape(atob(b + '==='.slice((b.length + 3) % 4))));
+  } catch (e) {
+    base = '';
+  }
+  if (dot > 0 && /^https:\/\/[a-z0-9.-]+(:\d{2,5})?$/.test(base)) {
+    location.replace(base + '/oauth/retour' + location.search);
+    return;
+  }
+  var en = !/^fr/i.test(navigator.language || '');
+  document.getElementById('t').textContent = en ? 'Connection failed' : 'La connexion n’a pas abouti';
+  document.getElementById('d').textContent = en ? 'Go back to Stead and start again.' : 'Reviens dans Stead et relance la connexion.';
+})();
+</script>
+</body>
+</html>
